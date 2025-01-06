@@ -1,3 +1,9 @@
 node_modules
 
 yarn.lock
+yarn.error
+
+*storybook.log
+
+package-lock.json
+

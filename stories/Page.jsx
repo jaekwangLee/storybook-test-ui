@@ -3,12 +3,8 @@ import React from 'react';
 import { Header } from './Header';
 import './page.css';
 
-type User = {
-  name: string;
-};
-
-export const Page: React.VFC = () => {
-  const [user, setUser] = React.useState<User>();
+export const Page = () => {
+  const [user, setUser] = React.useState();
 
   return (
     <article>
@@ -19,7 +15,7 @@ export const Page: React.VFC = () => {
         onCreateAccount={() => setUser({ name: 'Jane Doe' })}
       />
 
-      <section>
+      <section className="storybook-page">
         <h2>Pages in Storybook</h2>
         <p>
           We recommend building UIs with a{' '}

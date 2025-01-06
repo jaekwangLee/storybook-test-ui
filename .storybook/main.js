@@ -1,32 +1,19 @@
-module.exports = {
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
+const config = {
   stories: [
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)"
+    "../stories/**/*.mdx",
+    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
-    '@storybook/addon-actions',
-    '@storybook/addon-links',
-    '@storybook/addon-essentials'
+    "@storybook/addon-webpack5-compiler-swc",
+    "@storybook/addon-onboarding",
+    "@storybook/addon-essentials",
+    "@chromatic-com/storybook",
+    "@storybook/addon-interactions",
   ],
-  webpackFinal: async (config) => {
-    // Babel Loader 추가
-    config.module.rules.push({
-      test: /\.(js|mjs|jsx|ts|tsx)$/,
-      exclude: /node_modules/,
-      use: {
-        loader: require.resolve('babel-loader'),
-        options: {
-          presets: [
-            require.resolve('@babel/preset-env'),
-            require.resolve('@babel/preset-react'),
-            require.resolve('@babel/preset-typescript'),
-          ],
-        },
-      },
-    });
-
-    // Resolve 확장자 추가
-    config.resolve.extensions.push('.js', '.mjs', '.jsx', '.ts', '.tsx');
-    return config;
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {},
   },
-  framework: '@storybook/react',
 };
+export default config;
